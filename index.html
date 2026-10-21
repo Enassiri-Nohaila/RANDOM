@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg,#11998e,#38ef7d);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+}
+h1{
+    color: white;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+p{
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    
+}
+#result{
+    width: 180px;
+    height: 180ph;
+    font-size: 70px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 30px;
+    border-radius: 25px;
+}
+#btn{
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#btn:hover{
+    transform: scale(1.05);
+}
+</style>
+
+</head>
+
+<body>
+    <h1>Random Number</h1>
+    <p>choisissez un nombre aléatoire entre 1 et 24</p>
+    <div id="result"></div>
+    <button id="btn">
+        choisir un numéro
+    </button>
+
+    <script>
+        let result = document.getElementById("result");
+let btn = document.getElementById("btn");
+
+let nbrs = [];
+
+function créerNbr() {
+    nbrs = [];
+
+    for (let i = 1; i <= 24; i++) {
+        nbrs.push(i);
+    }
+}
+
+créerNbr();
+
+btn.addEventListener("click", function () {
+
+    if (nbrs.length === 0) {
+        créerNbr();
+    }
+
+    let randomIndexing = Math.floor(Math.random() * nbrs.length);
+
+    let randomNbr = nbrs[randomIndexing];
+
+    result.innerHTML = randomNbr;
+
+    nbrs.splice(randomIndexing, 1);
+});
+    </script>
+</body>
+</html>
